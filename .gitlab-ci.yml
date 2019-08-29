@@ -1,0 +1,31 @@
+stages:
+  - build
+  - deploy
+
+cache:
+ paths:
+ # This took some trial and error to figure out.
+  - ~/.cache/pip/
+
+job packaging:
+  stage: build
+  artifacts:
+    paths:
+    - dist/
+    expire_in: 5 minute
+  script: 
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install --user --upgrade setuptools wheel
+  - pip install -r minds_epg/requirements.txt
+  - python setup.py sdist bdist_wheel
+
+job deploy:
+  stage: deploy
+  script: 
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install --user --upgrade twine
+  - python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+  only:
+  - master
