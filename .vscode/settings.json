@@ -1,3 +1,13 @@
 {
-    "python.pythonPath": "/home/ansible/miniconda3/envs/minds_epg/bin/python"
+    "python.pythonPath": "${workspaceRoot}/conda_xtreamcode_env",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./tests",
+        "-p",
+        "*test*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.unittestEnabled": true
 }
