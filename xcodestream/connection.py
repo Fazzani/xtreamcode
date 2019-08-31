@@ -1,8 +1,6 @@
 import re
 from idlelib import query
 from urllib.parse import urlparse
-from xcodestream.lib.strlib import _str_or_default
-
 
 class connection:
     def __init__(
