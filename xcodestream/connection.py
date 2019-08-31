@@ -2,7 +2,8 @@ import re
 from idlelib import query
 from urllib.parse import urlparse
 
-class connection:
+
+class Connection:
     def __init__(
         self,
         scheme: str = "http",

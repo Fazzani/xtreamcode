@@ -3,7 +3,7 @@ minds_epg.egg-info
 dist
 # Byte-compiled / optimized / DLL files
 conda_xtreamcode_env/
-__pycache__/
+!**/__pycache__/
 *.py[cod]
 *$py.class
 *.pyc

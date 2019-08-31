@@ -1,27 +1,27 @@
 import unittest
 
-from xcodestream.connection import connection
+from xcodestream.connection import Connection
 
 
 class TestConnection(unittest.TestCase):
 
-    def test_mactched_url(self):
+    def test_matched_url(self):
         url = "https://test.com:5609?username=test&password=pass"
-        matched, conn = connection.from_url(url)
+        matched, conn = Connection.from_url(url)
         self.assertTrue(matched)
-        self.assertTrue(isinstance(conn, connection))
+        self.assertTrue(isinstance(conn, Connection))
         self.assertEqual(str(conn), url)
 
-    def test_mactched_url_without_port(self):
+    def test_matched_url_without_port(self):
         url = "http://test.com?username=test&password=pass"
-        matched, conn = connection.from_url(url)
+        matched, conn = Connection.from_url(url)
         self.assertTrue(matched)
-        self.assertTrue(isinstance(conn, connection))
+        self.assertTrue(isinstance(conn, Connection))
         self.assertEqual(str(conn), url)
 
-    def test_not_mactched_username_url(self):
+    def test_not_matched_username_url(self):
         url = "https://test.com:5609?usename=test&password=pass"
-        matched, conn = connection.from_url(url)
+        matched, conn = Connection.from_url(url)
         self.assertFalse(matched)
 
     # def test_parse(self):
