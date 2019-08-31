@@ -20,8 +20,8 @@ class TestConnection(unittest.TestCase):
         self.assertEqual(str(conn), url)
 
     def test_not_mactched_username_url(self):
-        url="https://test.com:5609?usename=test&password=pass"
-        matched, conn=connection.from_url(url)
+        url = "https://test.com:5609?usename=test&password=pass"
+        matched, conn = connection.from_url(url)
         self.assertFalse(matched)
 
     # def test_parse(self):

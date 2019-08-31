@@ -1,11 +1,18 @@
 import re
 from idlelib import query
 from urllib.parse import urlparse
+from xcodestream.lib.strlib import _str_or_default
 
 
-class connection():
-
-    def __init__(self, scheme: str = "http", server: str = "", port: str = "", username: str = "", password: str = ""):
+class connection:
+    def __init__(
+        self,
+        scheme: str = "http",
+        server: str = "",
+        port: str = 80,
+        username: str = "",
+        password: str = "",
+    ):
         self.scheme = scheme
         self.server = server
         self.port = port
@@ -16,13 +23,18 @@ class connection():
         return f"{self.__class__} {self.scheme}://{self.server}:{self.port}?username={self.username}&password={self.password}"
 
     def __str__(self):
-        return f"{self.scheme}://{self.server}:{self.port}?username={self.username}&password={self.password}"
+        port = f":{self.port}" if self.port else ""
+        return (
+            f"{self.scheme}://{self.server}{port}?username={self.username}&password={self.password}"
+        )
 
     @classmethod
     def from_url(cls, url: str):
-        # \?username=(?P<username>w+)&password=(?P<password>w+)"
         o = urlparse(url)
-        # regexp_url = "^(?P<scheme>https?)://(?P<server>[a-z$-_@\.&]+):?(?P<port>\d*)[?|/]+username=(?P<username>\w+)&password=(?P<password>\w+)"
         regexp_url = "^username=(?P<username>\w+)&password=(?P<password>\w+)"
-        res = re.match(regexp_url, o.query, re.IGNORECASE)  # .groupdict()
-        return (False, cls()) if res == None else (True, cls(server=o.hostname, port=o.port, scheme=o.scheme, ** res.groupdict()))
+        res = re.match(regexp_url, o.query, re.IGNORECASE)
+        return (
+            (True, cls(server=o.hostname, port=o.port, scheme=o.scheme, **res.groupdict()))
+            if res
+            else (False, cls())
+        )
