@@ -1,8 +1,8 @@
 {
   "python.pythonPath": "conda_xtreamcode_env/bin/python",
   "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pep8Enabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pep8Enabled": true,
   "python.linting.pep8Args": ["--ignore=E501"],
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length", "120"],
