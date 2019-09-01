@@ -1,4 +1,12 @@
+image: "python:3.6"
+
+before_script:
+  - python --version
+  - pip install -r xcodestream/requirements.txt
+
 stages:
+  - lint
+  - test
   - build
   - deploy
 
@@ -6,6 +14,22 @@ cache:
  paths:
  # This took some trial and error to figure out.
   - ~/.cache/pip/
+
+pylint:
+  stage: lint
+  allow_failure: true
+  script:
+    - pip install pylint --quiet
+    - pylint xcodestream/
+
+test:
+  stage: test
+  script:
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install --user --upgrade setuptools wheel
+  - python setup.py sdist bdist_wheel
+  - python -m unittest discover --verbose . "*_test.py"
 
 job packaging:
   stage: build
@@ -17,7 +41,6 @@ job packaging:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade setuptools wheel
-  - pip install -r xcodestream/requirements.txt
   - python setup.py sdist bdist_wheel
 
 job deploy:
