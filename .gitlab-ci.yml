@@ -19,8 +19,8 @@ pylint:
   stage: lint
   allow_failure: true
   script:
-    - pip install pylint --quiet
-    - pylint xcodestream/
+    - pip install black --quiet
+    - black xcodestream/
 
 test:
   stage: test
