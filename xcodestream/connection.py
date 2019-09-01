@@ -4,14 +4,7 @@ from urllib.parse import urlparse
 
 
 class Connection:
-    def __init__(
-        self,
-        scheme: str = "http",
-        server: str = "",
-        port: str = 80,
-        username: str = "",
-        password: str = "",
-    ):
+    def __init__(self, scheme: str = "http", server: str = "", port: str = 80, username: str = "", password: str = ""):
         self.scheme = scheme
         self.server = server
         self.port = port
@@ -23,9 +16,7 @@ class Connection:
 
     def __str__(self):
         port = f":{self.port}" if self.port else ""
-        return (
-            f"{self.scheme}://{self.server}{port}?username={self.username}&password={self.password}"
-        )
+        return f"{self.scheme}://{self.server}{port}?username={self.username}&password={self.password}"
 
     @classmethod
     def from_url(cls, url: str):
@@ -33,7 +24,5 @@ class Connection:
         regexp_url = "^username=(?P<username>\w+)&password=(?P<password>\w+)"
         res = re.match(regexp_url, o.query, re.IGNORECASE)
         return (
-            (True, cls(server=o.hostname, port=o.port, scheme=o.scheme, **res.groupdict()))
-            if res
-            else (False, cls())
+            (True, cls(server=o.hostname, port=o.port, scheme=o.scheme, **res.groupdict())) if res else (False, cls())
         )

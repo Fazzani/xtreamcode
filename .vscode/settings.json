@@ -2,16 +2,15 @@
   "python.pythonPath": "conda_xtreamcode_env/bin/python",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.pep8Enabled": true,
-  "python.linting.pep8Args": [
-         "--ignore=E501" 
-     ],
+  "python.linting.pep8Enabled": false,
+  "python.linting.pep8Args": ["--ignore=E501"],
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "100"],
+  "python.formatting.blackArgs": ["--line-length", "120"],
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*test*.py"],
   "python.testing.pytestEnabled": false,
   "python.testing.nosetestsEnabled": false,
   "python.testing.unittestEnabled": true,
+  "python.sortImports.args": ["-rc", "--atomic"],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,

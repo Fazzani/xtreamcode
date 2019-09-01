@@ -4,7 +4,6 @@ from xcodestream.connection import Connection
 
 
 class TestConnection(unittest.TestCase):
-
     def test_matched_url(self):
         url = "https://test.com:5609?username=test&password=pass"
         matched, conn = Connection.from_url(url)
@@ -36,5 +35,5 @@ class TestConnection(unittest.TestCase):
     #         s.split(2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

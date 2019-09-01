@@ -19,17 +19,25 @@ pylint:
   stage: lint
   allow_failure: true
   script:
-    - pip install black --quiet
-    - black xcodestream/
+    - pip install pep8 --quiet
+    - pep8 --statistics -qq xcodestream/
 
-test:
+test_variable:
+  stage: test
+  script:
+    - echo $CI_JOB_STAGE
+    - echo $PLAYLIST_URL_TEST
+
+test and coverage:
   stage: test
   script:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade setuptools wheel
   - python setup.py sdist bdist_wheel
-  - python -m unittest discover --verbose . "test_*.py"
+  - python -m coverage run -m unittest discover --verbose . "test_*.py"
+  - python -m coverage report -m
+  coverage: '/^TOTAL.*\s+(\d+\%)$/'
 
 job packaging:
   stage: build
@@ -37,7 +45,7 @@ job packaging:
     paths:
     - dist/
     expire_in: 5 minute
-  script: 
+  script:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade setuptools wheel
@@ -48,7 +56,7 @@ job deploy pypi test:
   except:
     - tags
     - triggers
-  script: 
+  script:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade twine
@@ -59,7 +67,7 @@ job deploy pypi:
   only:
     - tags
     - triggers
-  script: 
+  script:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade twine

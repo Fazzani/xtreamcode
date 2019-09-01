@@ -9,8 +9,8 @@ class Test_Client(unittest.TestCase):
         client = Client(url)
         res = client.auth()
         self.assertIsNotNone(res)
-        self.assertIsNotNone(res['user_info'])
-        self.assertIsNotNone(res['server_info'])
+        self.assertIsNotNone(res["user_info"])
+        self.assertIsNotNone(res["server_info"])
 
     def test_live_streams(self):
         url = os.environ.get("PLAYLIST_URL_TEST")

@@ -4,7 +4,7 @@ from xcodestream.connection import Connection
 from xcodestream.url_api_builder import EndpointEnum, Url_api_builder
 
 
-class Client():
+class Client:
     def __init__(self, url: str):
         self._url = url
         self.matched, self._connection = Connection.from_url(url)
