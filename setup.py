@@ -5,10 +5,10 @@ with open("readme.md", "r") as fh:
 
 setuptools.setup(
     name="xcodestream",
-    version="0.0.1",
+    version="0.0.2",
     author="Heni Fazzani",
     author_email="heni.fazzani@gmail.com",
-    description="Xtream code api python loader",
+    description="Xtream code api python scraper",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/fazzani/minds_epg",

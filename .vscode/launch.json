@@ -10,6 +10,13 @@
       "request": "launch",
       "module": "unittest",
       "args": ["discover", "-v"]
+    },
+    {
+      "name": "Python: unit tests & coverage",
+      "type": "python",
+      "request": "launch",
+      "module": "coverage",
+      "args": ["run", "-m", "unittest", "discover", "-v"]
     }
   ]
 }
