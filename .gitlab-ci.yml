@@ -3,6 +3,7 @@ image: "python:3.6"
 before_script:
   - python --version
   - pip install -r xcodestream/requirements.txt
+  - pip install -r requirements.txt
 
 stages:
   - lint
