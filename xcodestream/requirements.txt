@@ -1,2 +1,1 @@
-mindsdb==1.4.3
 requests==2.22.0
