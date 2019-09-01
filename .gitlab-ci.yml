@@ -29,7 +29,7 @@ test:
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade setuptools wheel
   - python setup.py sdist bdist_wheel
-  - python -m unittest discover --verbose . "*_test.py"
+  - python -m unittest discover --verbose . "test_*.py"
 
 job packaging:
   stage: build
