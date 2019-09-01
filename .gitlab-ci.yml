@@ -64,7 +64,7 @@ job deploy pypi test:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade twine
-  - python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+  - python -m twine upload -r https://test.pypi.org/legacy/ dist/*
 
 job deploy pypi:
   stage: deploy
@@ -75,4 +75,4 @@ job deploy pypi:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade twine
-  - python -m twine upload -p ${TWINE_PASSWORD_PROD}
+  - python -m twine upload -p ${TWINE_PASSWORD_PROD} dist/*
