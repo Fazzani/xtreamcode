@@ -14,10 +14,10 @@ stages:
   - build
   - deploy
 
-cache:
- paths:
- # This took some trial and error to figure out.
-  - ~/.cache/pip/
+# cache:
+#  paths:
+#  # This took some trial and error to figure out.
+#   - ~/.cache/pip/
 
 pylint:
   stage: lint
@@ -41,6 +41,7 @@ test and coverage:
   - python -m coverage run -m unittest discover --verbose . "test_*.py"
   - python -m coverage report -m
   coverage: '/^TOTAL.*\s+(\d+\%)$/'
+  allow_failure: true
 
 job packaging:
   stage: build
