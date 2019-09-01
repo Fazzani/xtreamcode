@@ -1,5 +1,8 @@
 image: "python:3.6"
 
+variables:
+  PLAYLIST_URL_TEST: $PLAYLIST_URL_TEST
+
 before_script:
   - python --version
   - pip install -r xcodestream/requirements.txt
@@ -20,14 +23,13 @@ pylint:
   stage: lint
   allow_failure: true
   script:
-    - pip install pep8 --quiet
-    - pep8 --statistics -qq xcodestream/
+    - pycodestyle  --statistics -qq xcodestream/
 
-test_variable:
-  stage: test
-  script:
-    - echo $CI_JOB_STAGE
-    - echo $PLAYLIST_URL_TEST
+# test_variable:
+#   stage: test
+#   script:
+#     - echo $CI_JOB_STAGE
+#     - echo $PLAYLIST_URL_TEST
 
 test and coverage:
   stage: test

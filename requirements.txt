@@ -1,5 +1,5 @@
 # For dev
 black
 pre-commit==1.18.3
-pep8==1.7.1
+pycodestyle
 coverage
