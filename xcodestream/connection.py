@@ -1,5 +1,4 @@
 import re
-from idlelib import query
 from urllib.parse import urlparse
 
 

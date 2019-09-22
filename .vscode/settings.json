@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "conda_xtreamcode_env/bin/python",
+  "python.pythonPath": "/miniconda3/envs/conda_xtreamcode_env/bin/python",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": false,
   "python.linting.pep8Enabled": true,
