@@ -17,7 +17,7 @@ class EndpointEnum(Enum):
     CATCHUP = 10
 
 
-class Url_api_builder(object):
+class Url_api_builder:
     endpoints = {
         "auth": "{}://{}:{}/player_api.php?username={}&password={}",
         "user_panel": "{}://{}:{}/panel_api.php?username={}&password={}",
