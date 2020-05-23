@@ -20,7 +20,7 @@ class Connection:
     @classmethod
     def from_url(cls, url: str):
         o = urlparse(url)
-        regexp_url = "^username=(?P<username>\w+)&password=(?P<password>\w+)"
+        regexp_url = r"^username=(?P<username>\w+)&password=(?P<password>\w+)"
         res = re.match(regexp_url, o.query, re.IGNORECASE)
         return (
             (True, cls(server=o.hostname, port=o.port, scheme=o.scheme, **res.groupdict())) if res else (False, cls())
