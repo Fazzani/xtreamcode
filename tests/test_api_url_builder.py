@@ -38,7 +38,7 @@ class Test_url_api_builder(unittest.TestCase):
         url = "https://test.com:5609?username=test&password=pass"
         matched, conn = Connection.from_url(url)
         url = Url_api_builder.build(EndpointEnum.LIVE_STREAMS, conn)
-        expected = f"https://test.com:5609/player_api.php?username=test&password=pass&action=get_live_streams"
+        expected = "https://test.com:5609/player_api.php?username=test&password=pass&action=get_live_streams"
         self.assertEqual(expected, url)
 
 
