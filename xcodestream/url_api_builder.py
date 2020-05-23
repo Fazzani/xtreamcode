@@ -34,7 +34,6 @@ class Url_api_builder(object):
 
     @staticmethod
     def build(ep: EndpointEnum, cnx: Connection, *args):
-        test = str.lower(ep.name)
         return Url_api_builder.endpoints[str.lower(ep.name)].format(
             cnx.scheme, cnx.server, cnx.port, cnx.username, cnx.password, *args
         )
