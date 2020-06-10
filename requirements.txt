@@ -1,5 +1,5 @@
 # For dev
 black
-pre-commit==2.5.0
+pre-commit==2.5.1
 pycodestyle
 coverage
